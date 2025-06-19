@@ -8,7 +8,7 @@ import { AnimatedBackground } from "@/app/components/ui/animated-background";
 import { verifyToken } from "@/app/lib/auth";
 import { Button } from "@/app/components/ui/button";
 
-export default function AdminPage() {
+export default function Page() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [showAdmin, setShowAdmin] = useState(false); 
@@ -79,3 +79,8 @@ export default function AdminPage() {
     </div>
   );
 }
+
+// export default function Page() {
+//   return <div style={{ color: 'red' }}>Is this visible?</div>;
+// }
+

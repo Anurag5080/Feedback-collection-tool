@@ -44,7 +44,6 @@
     "@types/react": "19.1.8",
     "@types/react-dom": "19.1.6",
     "@types/ws": "^8.18.1",
-    "autoprefixer": "10.4.21",
     "bcryptjs": "^3.0.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -60,7 +59,6 @@
     "next": "15.3.3",
     "next-themes": "^0.4.6",
     "pg": "^8.16.0",
-    "postcss": "8.5.6",
     "react": "19.1.0",
     "react-day-picker": "^9.7.0",
     "react-dom": "19.1.0",
@@ -71,7 +69,6 @@
     "rimraf": "^6.0.1",
     "sonner": "^2.0.5",
     "tailwind-merge": "^3.3.1",
-    "tailwindcss": "4.1.10",
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^1.1.2",
     "ws": "^8.18.2",
@@ -80,6 +77,10 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.10",
     "@types/node": "24.0.3",
+    "@types/tailwindcss": "^3.0.11",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.10",
     "typescript": "5.8.3"
   }
 }
