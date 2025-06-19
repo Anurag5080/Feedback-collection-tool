@@ -2,7 +2,6 @@
 
 import { FeedbackForm } from "@/app/components/feedback-form";
 import { AnimatedBackground } from "@/app/components/ui/animated-background";
-import { ThemeToggle } from "@/app/components/theme-toggle";
 import { Button } from "@/app/components/ui/button";
 import { Shield } from "lucide-react";
 import Link from "next/link";
@@ -30,7 +29,6 @@ export default function Home() {
             animate={{ opacity: 1, x: 0 }}
             className="flex items-center gap-4"
           >
-            <ThemeToggle />
             <Link href="/admin">
               <Button variant="outline" className="bg-white/10 border-white/20 hover:bg-white/20 text-white">
                 <Shield className="w-4 h-4 mr-2" />

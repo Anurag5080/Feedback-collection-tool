@@ -14,12 +14,11 @@ import { Label } from "@/app/components/ui/label";
 import { CheckCircle, Send, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
-
 const feedbackSchema = z.object({
   name: z.string().optional(),
   email: z.string().email().optional().or(z.literal("")),
   feedback: z.string().min(10, "Feedback must be at least 10 characters long"),
-  rating: z.number().min(1, "Please provide a rating").max(5)
+  rating: z.number().min(1, "Please provide a rating").max(5),
 });
 
 type FeedbackForm = z.infer<typeof feedbackSchema>;
@@ -34,32 +33,31 @@ export function FeedbackForm() {
     handleSubmit,
     formState: { errors },
     reset,
-    setValue
+    setValue,
   } = useForm<FeedbackForm>({
-    resolver: zodResolver(feedbackSchema)
+    resolver: zodResolver(feedbackSchema),
   });
 
   const onSubmit = async (data: FeedbackForm) => {
     setIsLoading(true);
     try {
-      const response = await fetch('/api/feedback', {
-        method: 'POST',
+      const response = await fetch("/api/feedback", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
 
       if (!response.ok) {
-        throw new Error('Failed to submit feedback');
+        throw new Error("Failed to submit feedback");
       }
 
       setIsSubmitted(true);
       reset();
       setRating(0);
       toast.success("Thank you for your feedback!");
-      
-      // Reset form after 3 seconds
+
       setTimeout(() => {
         setIsSubmitted(false);
       }, 3000);
@@ -82,7 +80,7 @@ export function FeedbackForm() {
         animate={{ opacity: 1, y: 0 }}
         className="max-w-md mx-auto"
       >
-        <GlassCard className="p-8 text-center">
+        <GlassCard className="p-8 text-center bg-gray-800/60 backdrop-blur-lg">
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
@@ -91,7 +89,7 @@ export function FeedbackForm() {
             <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-4" />
           </motion.div>
           <h3 className="text-2xl font-bold text-white mb-2">Thank You!</h3>
-          <p className="text-gray-300">
+          <p className="text-gray-400">
             Your feedback has been submitted successfully. We appreciate your input!
           </p>
         </GlassCard>
@@ -105,31 +103,31 @@ export function FeedbackForm() {
       animate={{ opacity: 1, y: 0 }}
       className="max-w-md mx-auto"
     >
-      <GlassCard className="p-8">
+      <GlassCard className="p-8 bg-gray-900/80 backdrop-blur-lg">
         <div className="text-center mb-6">
           <h2 className="text-3xl font-bold text-white mb-2">Share Your Feedback</h2>
-          <p className="text-gray-300">Help us improve by sharing your thoughts</p>
+          <p className="text-gray-400">Help us improve by sharing your thoughts</p>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="space-y-2">
-            <Label htmlFor="name" className="text-white">Name (Optional)</Label>
+            <Label htmlFor="name" className="text-gray-300">Name (Optional)</Label>
             <Input
               {...register("name")}
               id="name"
               placeholder="Your name"
-              className="bg-white/10 border-white/20 text-white placeholder:text-gray-400 focus:border-blue-400 focus:ring-blue-400/50"
+              className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-500 focus:border-blue-500 focus:ring-blue-500/50"
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="email" className="text-white">Email (Optional)</Label>
+            <Label htmlFor="email" className="text-gray-300">Email (Optional)</Label>
             <Input
               {...register("email")}
               id="email"
               type="email"
               placeholder="your.email@example.com"
-              className="bg-white/10 border-white/20 text-white placeholder:text-gray-400 focus:border-blue-400 focus:ring-blue-400/50"
+              className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-500 focus:border-blue-500 focus:ring-blue-500/50"
             />
             {errors.email && (
               <p className="text-red-400 text-sm">{errors.email.message}</p>
@@ -137,7 +135,7 @@ export function FeedbackForm() {
           </div>
 
           <div className="space-y-2">
-            <Label className="text-white">Rating</Label>
+            <Label className="text-gray-300">Rating</Label>
             <div className="flex justify-center">
               <StarRating
                 value={rating}
@@ -151,13 +149,13 @@ export function FeedbackForm() {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="feedback" className="text-white">Feedback *</Label>
+            <Label htmlFor="feedback" className="text-gray-300">Feedback *</Label>
             <Textarea
               {...register("feedback")}
               id="feedback"
               placeholder="Tell us what you think..."
               rows={4}
-              className="bg-white/10 border-white/20 text-white placeholder:text-gray-400 focus:border-blue-400 focus:ring-blue-400/50 resize-none"
+              className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-500 focus:border-blue-500 focus:ring-blue-500/50 resize-none"
             />
             {errors.feedback && (
               <p className="text-red-400 text-sm">{errors.feedback.message}</p>
