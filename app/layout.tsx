@@ -1,13 +1,13 @@
-import '../global.css';
-
+import "../global.css";
+import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { ThemeProvider } from "@/app/components/theme-provider";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "Feedback App",
-  description: "Collect feedback with a sleek UI",
+export const metadata: Metadata = {
+  title: "FeedbackPro - Modern Feedback Collection Tool",
+  description: "Collect and analyze user feedback with beautiful real-time dashboard and analytics",
 };
 
 export default function RootLayout({
@@ -16,11 +16,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
-      <body className={inter.className} suppressHydrationWarning>
-        <ThemeProvider defaultTheme="system">
-          {children}
-        </ThemeProvider>
+    <html lang="en">
+      <body className={`${inter.className} bg-background text-foreground`}>
+        {children}
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            className: "bg-background text-foreground border border-border",
+          }}
+        />
       </body>
     </html>
   );
