@@ -2,9 +2,6 @@ import { NextResponse } from 'next/server';
 import { getAllFeedbacks, initDatabase } from '@/app/lib/database';
 import { verifyToken } from '@/app/lib/auth';
 
-
-
-
 let dbInitialized = false;
 
 export async function GET(request: Request) {
